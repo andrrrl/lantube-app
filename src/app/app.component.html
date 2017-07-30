@@ -1,20 +1,190 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
-  <img width="300" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOS4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAyNTAgMjUwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyNTAgMjUwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPg0KCS5zdDB7ZmlsbDojREQwMDMxO30NCgkuc3Qxe2ZpbGw6I0MzMDAyRjt9DQoJLnN0MntmaWxsOiNGRkZGRkY7fQ0KPC9zdHlsZT4NCjxnPg0KCTxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMTI1LDMwIDEyNSwzMCAxMjUsMzAgMzEuOSw2My4yIDQ2LjEsMTg2LjMgMTI1LDIzMCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAJIi8+DQoJPHBvbHlnb24gY2xhc3M9InN0MSIgcG9pbnRzPSIxMjUsMzAgMTI1LDUyLjIgMTI1LDUyLjEgMTI1LDE1My40IDEyNSwxNTMuNCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAxMjUsMzAgCSIvPg0KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0xMjUsNTIuMUw2Ni44LDE4Mi42aDBoMjEuN2gwbDExLjctMjkuMmg0OS40bDExLjcsMjkuMmgwaDIxLjdoMEwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMQ0KCQlMMTI1LDUyLjF6IE0xNDIsMTM1LjRIMTA4bDE3LTQwLjlMMTQyLDEzNS40eiIvPg0KPC9nPg0KPC9zdmc+DQo=">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="http://angularjs.blogspot.ca/">Angular blog</a></h2>
-  </li>
-</ul>
+<!doctype html>
+<html lang="es">
 
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>
+    Lantube 2
+  </title>
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+  <!-- <link rel="stylesheet" href="stylesheets/font-awesome.min.css"> -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+</head>
+
+<body>
+
+  <div *ngIf="serverStats && playerStats" class="container">
+    <div class="row">
+      <div class="col-12">
+        <hr>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-1">
+
+      </div>
+      <div class="col-10 col-12">
+        <div class="page-header">
+          <h1>
+            <i class="mdi mdi-youtube-play"></i> Lantube
+            <sup>2</sup>
+            <small>LAN Youtube player</small>
+          </h1>
+        </div>
+      </div>
+      <div class="col-1">
+
+      </div>
+    </div>
+    <div class="row">
+
+      <form class="form">
+
+        <div class="col-12 col-xs-5">
+          <label>Append any Youtube video to the list</label>
+          <div class="input-group">
+            <input [(ngModel)]="videoURL" name="videoURL" type="text" class="form-control" placeholder="Youtube URL">
+            <span class="input-group-btn">
+							<button id="add" class="btn btn-primary" type="button" (click)="addVideo()">Add</button>
+						</span>
+          </div>
+          <hr>
+
+          <!-- <button type="button" class="btn btn-success" (click)="updateServerStats()">Update server stats</button>
+          <br> Current Server Stats:
+          <pre>{{serverStats | json }}</pre>
+          <hr> -->
+          <!-- <button type="button" class="btn btn-success" (click)="updatePlayerStats()">Update player stats</button> -->
+          <h4>Current Player Stats:</h4>
+          <ul class="list-group">
+            <li class="list-group-item">Player: {{playerStats.player}}</li>
+            <li class="list-group-item">Status: {{playerStats.status}}</li>
+            <li class="list-group-item" *ngIf="playerStats.video_title">Now playing: {{playerStats.video_title}} ~ <i class="mdi mdi-music"></i></li>
+          </ul>
+          <!-- <pre>{{playerStats | json }}</pre> -->
+          <!-- 
+          <button type="button" class="btn btn-success" (click)="updatePlayer()">Update player settings</button>
+          <br> Current Player Settings:
+          <pre>{{player | json }}</pre> -->
+          <div class="text-warning" *ngIf="videos.length === 0">
+            No videos added to Lantube yet!
+          </div>
+
+          <div class="row" *ngIf="player?.videoModes?.length">
+
+            <div class="col-4">
+              <label>{{player.title}}</label>
+              <div class="form-group">
+
+                <div class="radio" *ngFor="let vm of videoModes">
+                  <label>
+                    <input type="radio" name="videoMode">{{vm}}
+                  </label>
+                </div>
+
+              </div>
+            </div>
+            <!-- <div class="col-8">
+              <div class="row">
+                <div class="col-12">
+                  <label>Volume: </label>
+                  <div class="form-group">
+                    <button (click)="setVolume('up')" class="btn btn-primary" type="button" name="volume-up"><i class="fa fa-arrow-up"> </i></button>
+                    <button (click)="setVolume('down')" class="btn btn-primary" type="button" name="volume-down"><i class="fa fa-arrow-down"> </i></button>
+                    <span ng-models="volume">{{player.volume}}%</span>
+                    <br>
+                    <br>
+                    <div ng-hide="false" id="slider">
+                      <input class="bar form-control" id="volume-range" type="range" (click)="setVolume(player.volume)"
+                        name="volume-range" value="{{player.volume}}" min="0" max="100" step="1">
+                      <output ng-hide="true" id="rangevalue" name="result">{{player.volume}}</output>
+                    </div>
+                    <br>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+          </div>
+          <hr>
+        </div>
+      </form>
+    </div>
+
+    <div class="row">
+      <div class="col-1">
+
+      </div>
+      <div class="col-10 col-12">
+
+      </div>
+      <div class="col-1">
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-1">
+
+      </div>
+      <div class="col-10 col-12">
+        <button *ngIf="playerStats.status === 'stopped'" type="button" class="btn btn-success" (click)="playAll()"><i class="mdi mdi-play"></i> play all</button>
+        <button *ngIf="playerStats.status !== 'stopped'" type="button" class="btn btn-danger" (click)="stopAll()"><i class="mdi mdi-stop"></i> stop</button>
+        <hr>
+        <div>
+          <input [(ngModel)]="query" type="text" placeholder="Filter list" class="form-control">
+        </div>
+        <table class="table table-striped lista-videos">
+          <tr *ngFor="let video of videos | filter:'title,_id':query; let i = index">
+            <td class="orden">
+              <div class="table-order">
+                {{i + 1}}
+              </div>
+            </td>
+            <td>
+              <div class="table-button">
+                <!--  [ngClass]="{
+                          'circle-o-notch' : isPlaying(video._id), 
+                          'spin'           : isPlaying(video._id), 
+                          'play'           : !isPlaying(video.-id) 
+                        }" -->
+                <!--  *ngIf="isPlaying(video._id)" -->
+                <button class="play btn btn-danger" type="button" (click)="play(video._id)">
+                    <i class="mdi mdi-play"></i>
+                </button>
+              </div>
+            </td>
+            <td class="titulo">
+              <span class="table-img">
+                <img class="video-thumbnail rounded" src="{{video.img}}" alt=""> 
+            </span>
+              <span class="table-text">{{video.title}}</span>
+            </td>
+            <td class="url">
+              <div class="table-url">
+                {{video.url}}
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-1">
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-1">
+
+      </div>
+      <div class="col-10">
+      </div>
+      <div class="col-1">
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
