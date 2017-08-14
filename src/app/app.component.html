@@ -54,9 +54,9 @@
           <hr>
 
           <!-- <button type="button" class="btn btn-success" (click)="updateServerStats()">Update server stats</button>
+          <hr> -->
           <br> Current Server Stats:
           <pre>{{serverStats | json }}</pre>
-          <hr> -->
           <!-- <button type="button" class="btn btn-success" (click)="updatePlayerStats()">Update player stats</button> -->
           <h4>Current Player Stats:</h4>
           <ul class="list-group">
@@ -64,11 +64,12 @@
             <li class="list-group-item">Status: {{playerStats.status}}</li>
             <li class="list-group-item" *ngIf="playerStats.video_title">Now playing: {{playerStats.video_title}} ~ <i class="mdi mdi-music"></i></li>
           </ul>
-          <!-- <pre>{{playerStats | json }}</pre> -->
+          <pre>{{playerStats | json }}</pre>
           <!-- 
           <button type="button" class="btn btn-success" (click)="updatePlayer()">Update player settings</button>
           <br> Current Player Settings:
-          <pre>{{player | json }}</pre> -->
+        -->
+          <pre>{{player | json }}</pre>
           <div class="text-warning" *ngIf="videos.length === 0">
             No videos added to Lantube yet!
           </div>
