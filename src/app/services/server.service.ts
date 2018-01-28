@@ -7,20 +7,20 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class ServerService {
 
-  private serveStatsURL = environment.API + '/status';
+  private serveStatsURL = environment.API + '/api/status';
 
   constructor(private http: Http) { }
 
-    extractData(res: Response) {
-      return res.json();
-    }
+  extractData(res: Response) {
+    return res.json();
+  }
 
-    get(params: any): Observable<any> {
-      return this.http.get(this.serveStatsURL, {params: params}).map(this.extractData);
-    }
+  get(params: any): Observable<any> {
+    return this.http.get(this.serveStatsURL, { params: params }).map(this.extractData);
+  }
 
-    update(stats: any): Observable<any> {
-      return this.http.put(this.serveStatsURL, stats).map(this.extractData);
-    }
+  update(stats: any): Observable<any> {
+    return this.http.put(this.serveStatsURL, stats).map(this.extractData);
+  }
 
 }

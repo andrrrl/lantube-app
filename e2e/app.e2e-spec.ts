@@ -1,10 +1,10 @@
-import { Lantube2Page } from './app.po';
+import { LantubeAppPage } from './app.po';
 
-describe('lantube2 App', () => {
-  let page: Lantube2Page;
+describe('lantube-app App', () => {
+  let page: LantubeAppPage;
 
   beforeEach(() => {
-    page = new Lantube2Page();
+    page = new LantubeAppPage();
   });
 
   it('should display welcome message', () => {

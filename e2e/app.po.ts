@@ -1,6 +1,6 @@
 import { browser, by, element } from 'protractor';
 
-export class Lantube2Page {
+export class LantubeAppPage {
   navigateTo() {
     return browser.get('/');
   }
