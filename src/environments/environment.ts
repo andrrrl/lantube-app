@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-  API: '//192.168.4.189:3000',
+  API: '//192.168.4.31:3000',
   PLAYER: 'mpv'
 };

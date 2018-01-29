@@ -42,7 +42,7 @@ export class AppComponent implements OnInit {
   // New video to be added thru <input>
   public videoURL: any;
 
-  private EVENT_URL = environment.API + '/stats?type=player';
+  private EVENT_URL = environment.API + '/api/stats?type=player';
   private serverMessage: any = {};
   private eventSource: any;
 
@@ -70,8 +70,11 @@ export class AppComponent implements OnInit {
       this.serverMessage = JSON.parse(evt.data);
 
       // Detector de cambios: Si el último mensaje de la API es diferente al previo, actualizar!
-      if (!this.playerStats.last_updated || this.playerStats.last_updated !== this.serverMessage.last_updated) {
+      if (this.playerStats && this.playerStats.last_updated === null || (this.playerStats && (this.playerStats.last_updated && this.playerStats.last_updated !== this.serverMessage.last_updated))) {
         this.playerStats = JSON.parse(this.serverMessage);
+        console.log(JSON.parse(this.serverMessage));
+      } else {
+		this.playerStats = {};
       }
 
       // Detectar cambios
@@ -138,10 +141,28 @@ export class AppComponent implements OnInit {
   }
 
   /**
-   * Plays PLS file generated "on the fly"
+   * Stops all playback
    */
   stopAll() {
     this.videosService.stopAll().subscribe(playback => {
+      this.currentVideo = playback;
+    });
+  }
+  
+  /**
+   * Pauses playback
+   */
+  pause() {
+    this.videosService.pause().subscribe(playback => {
+      this.currentVideo = playback;
+    });
+  }
+  
+  /**
+   * Changes volume
+   */
+  volume(change) {  
+    this.videosService.volume(change).subscribe(playback => {
       this.currentVideo = playback;
     });
   }

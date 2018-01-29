@@ -69,7 +69,7 @@
           <button type="button" class="btn btn-success" (click)="updatePlayer()">Update player settings</button>
           <br> Current Player Settings:
         -->
-          <pre>{{player | json }}</pre>
+          <!--pre>{{player | json }}</pre-->
           <div class="text-warning" *ngIf="videos.length === 0">
             No videos added to Lantube yet!
           </div>
@@ -131,8 +131,16 @@
 
       </div>
       <div class="col-10 col-12">
+        
         <button *ngIf="playerStats.status === 'stopped'" type="button" class="btn btn-success" (click)="playAll()"><i class="mdi mdi-play"></i> play all</button>
-        <button *ngIf="playerStats.status !== 'stopped'" type="button" class="btn btn-danger" (click)="stopAll()"><i class="mdi mdi-stop"></i> stop</button>
+        
+        <button *ngIf="playerStats.status !== 'stopped'" type="button" class="btn btn-danger" (click)="stopAll()"><i class="mdi mdi-stop"></i></button>
+        
+        <button *ngIf="playerStats.status !== 'stopped'" type="button" class="btn btn-warning" (click)="pause()"><i class="mdi mdi-pause"></i></button>
+        
+        <button *ngIf="playerStats.status !== 'stopped'" type="button" class="btn btn-warning" (click)="volume('+')"><i class="mdi mdi-volume-plus"></i></button>
+        
+        <button *ngIf="playerStats.status !== 'stopped'" type="button" class="btn btn-warning" (click)="volume('-')"><i class="mdi mdi-volume-minus"></i></button>
         <hr>
         <div>
           <input [(ngModel)]="query" type="text" placeholder="Filter list" class="form-control">

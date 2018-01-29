@@ -37,6 +37,14 @@ export class VideosService {
     return this.http.get(this.API + '/api/videos/stop').map(this.extractData);
   }
 
+  pause(): Observable<any[]> {
+    return this.http.get(this.API + '/api/videos/pause').map(this.extractData);
+  }
+
+  volume(volume: any): Observable<any[]> {
+    return this.http.get(this.API + '/api/videos/volume/' + volume).map(this.extractData);
+  }
+
   save(video: any): Observable<any> {
     return this.http.post(this.API + '/api/videos/', video).map(this.extractData);
   }

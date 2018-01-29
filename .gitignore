@@ -24,6 +24,9 @@
 !.vscode/launch.json
 !.vscode/extensions.json
 
+# redis dump
+*.rdb
+
 # misc
 /.sass-cache
 /connect.lock
